@@ -3,13 +3,14 @@
  * @return {string}
  */
 var reverseWords = function(s) {
-   s = s.trim();
-    
-    let words = s.split(/\s+/); 
+    let words = s.trim().split(/\s+/);
 
-    words. reverse();
+    // Reverse each word in the array
+    // let reversedWords = words.map(word => word.split('').reverse().join(''));
 
-    let reveresString = words.join(' ');
+    // Join the reversed words back into a single string
+    let reversedString = words.reverse().join(' ');
 
-    return reveresString;
+    return reversedString;
+
 };

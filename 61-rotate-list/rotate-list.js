@@ -11,27 +11,30 @@
  * @return {ListNode}
  */
 var rotateRight = function(head, k) {
-    if(head === null || k === 0) return head;
+    if (!head || k === 0) return head;
 
+    // Find the length of the linked list
     let length = 1;
     let tail = head;
-
-    while(tail.next !== null) {
+    while (tail.next) {
         tail = tail.next;
         length++;
     }
 
+    // Handle cases where k >= length
     k = k % length;
+    if (k === 0) return head;
 
-    if(k === 0 ) return head;
-
-    let newTail = head;
-    for(let i = 1; i<length-k; i++) {
-        newTail = newTail.next;
+    // Traverse the list to find the new head
+    let breakPoint = length - k;
+    let current = head;
+    for (let i = 1; i < breakPoint; i++) {
+        current = current.next;
     }
 
-    let newHead = newTail.next;
-    newTail.next = null;
+    // Rotate the list
+    let newHead = current.next;
+    current.next = null;
     tail.next = head;
 
     return newHead;

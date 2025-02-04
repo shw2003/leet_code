@@ -9,9 +9,7 @@ public:
 
             // Inner loop to check the next elements forming an ascending
             // subarray
-            for (int endIdx = startIdx + 1;
-                 endIdx < nums.size() && nums[endIdx] > nums[endIdx - 1];
-                 endIdx++) {
+            for (int endIdx = startIdx + 1; endIdx < nums.size() && nums[endIdx] > nums[endIdx - 1]; endIdx++) {
                 currentSubarraySum += nums[endIdx];
             }
 

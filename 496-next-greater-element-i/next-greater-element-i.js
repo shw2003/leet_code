@@ -6,25 +6,18 @@
 var nextGreaterElement = function(nums1, nums2) {
     let stack = [];
     
-    for(let i = 0; i <nums1.length; i++) {
-        let max = -1;
+    let map = new Map();
 
-        for(let j = 0; j < nums2.length; j++) {
-            let index = j;
-
-            if(nums1[i] === nums2[j]){
-                while(index !== nums2.length) {
-                    if(nums2[index] > nums1[i]) {
-                        max = nums2[index];
-                        break;
-
-                    }
-                    index++;
-                }
-            }
+    for(let num of nums2) {
+        while(stack.length && stack[stack.length - 1] < num) {
+            map.set(stack.pop(), num);
 
         }
-           stack.push(max);
+        stack.push(num);
     }
-return stack;
+
+    for(let i =0; i < nums1.length; i++){
+        nums1[i] = map.has(nums1[i]) ? map.get(nums1[i]) : -1;
+    }
+    return nums1;
 };

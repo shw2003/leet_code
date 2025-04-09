@@ -3,11 +3,16 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    const n = nums.length;
-    const freq = {};
+    let count = 0;
+    let cand = null;
 
-    for(let num of nums) {
-        freq[num] = (freq[num] || 0) + 1;
-        if(freq[num] >  Math.floor(n / 2)) return num;
+    for(let num of nums){
+        if(count === 0){
+
+        cand = num;
+        } 
+         count += (num === cand) ? 1 : -1;
     }
+
+     return cand;
 };
